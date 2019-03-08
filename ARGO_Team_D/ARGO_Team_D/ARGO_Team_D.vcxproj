@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{A3499566-7139-47A3-A26F-765702B1B24D}</ProjectGuid>
+    <RootNamespace>ARGOTeamD</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SDL_SDK)\include;$(IncludePath);tmxlite\include;Box2D\include</IncludePath>
+    <LibraryPath>$(SDL_SDK)\lib\x86\;tmxlite\lib;Box2D\lib\x86_64\dbg;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SDL_SDK)\include;tmxlite\include;Box2D\include</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;$(SDL_SDK)\lib\x86;tmxlite\lib;Box2D\lib\x86_64\rls</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>Json\;$(SDL_SDK)\SDL2_mixer-2.0.4\include\</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(SDL_SDK)\SDL2_IMAGE-2.0.3\lib\x86\;$(SDL_SDK)\SDL2_mixer-2.0.4\lib\x86\;</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /E /Y "$(SolutionDir)\dlls\*.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>DLL Copy</Message>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>xcopy /E /Y "$(ART_ASSETS)" "$(SolutionDir)ARGO_TEAM_D\ASSETS"</Command>
+      <Message>Asset Copy</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>Json\;$(SDL_SDK)\SDL2_mixer-2.0.4\include\</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SDL_SDK)\SDL2_IMAGE-2.0.3\lib\x86\;$(SDL_SDK)\SDL2_mixer-2.0.4\lib\x86\;</AdditionalLibraryDirectories>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>Json\;$(SDL_SDK)\SDL2_mixer-2.0.4\include\</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(SDL_SDK)\SDL2_IMAGE-2.0.3\lib\x86\;$(SDL_SDK)\SDL2_mixer-2.0.4\lib\x86\;</AdditionalLibraryDirectories>
+    </Link>
+    <PreBuildEvent>
+      <Command>xcopy /E /Y "$(ART_ASSETS)" "$(SolutionDir)ARGO_TEAM_D\ASSETS"</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>DLL Copy</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AI\PlayerAiSystem.cpp" />
+    <ClCompile Include="Bullets\Bullet.cpp" />
+    <ClCompile Include="Bullets\BulletManager.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Client\Client.cpp" />
+    <ClCompile Include="Client\UDPClient.cpp" />
+    <ClCompile Include="ECS\Components\AiComponent.cpp" />
+    <ClCompile Include="ECS\Components\ParticleEffectsComponent.cpp" />
+    <ClCompile Include="ECS\Systems\AiSystem.cpp" />
+    <ClCompile Include="ECS\Systems\HealthSystem.cpp" />
+    <ClCompile Include="ECS\Systems\ParticleSystem.cpp" />
+    <ClCompile Include="Factories\EnemyFactory.cpp" />
+    <ClCompile Include="Factories\Factory.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Hud.cpp" />
+    <ClCompile Include="Input\Command.cpp" />
+    <ClCompile Include="Input\ConcreteCommand.cpp" />
+    <ClCompile Include="ECS\Components\BodyComponent.cpp" />
+    <ClCompile Include="ECS\Components\PositionComponent.cpp" />
+    <ClCompile Include="ECS\Systems\NetworkingSystem.cpp" />
+    <ClCompile Include="ECS\Systems\AnimationSystem.cpp" />
+    <ClCompile Include="ECS\Systems\PhysicsSystem.cpp" />
+    <ClCompile Include="ECS\Systems\RenderSystem.cpp" />
+    <ClCompile Include="ECS\Systems\ControlSystem.cpp" />
+    <ClCompile Include="FSM\Animation.cpp" />
+    <ClCompile Include="FSM\IdleState.cpp" />
+    <ClCompile Include="FSM\WalkingState.cpp" />
+    <ClCompile Include="Factories\PlayerFactory.cpp" />
+    <ClCompile Include="Input\InputHandler.cpp" />
+    <ClCompile Include="Level\Goal.cpp" />
+    <ClCompile Include="Level\Level.cpp" />
+    <ClCompile Include="Level\LevelManager.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menu\Button.cpp" />
+    <ClCompile Include="Menu\CreditsScreen.cpp" />
+    <ClCompile Include="Menu\DeathScreen.cpp" />
+    <ClCompile Include="Menu\Label.cpp" />
+    <ClCompile Include="Menu\LevelSelectMenu.cpp" />
+    <ClCompile Include="Menu\LobbyScreen.cpp" />
+    <ClCompile Include="Menu\MainMenu.cpp" />
+    <ClCompile Include="Menu\ModeSelectScreen.cpp" />
+    <ClCompile Include="Menu\OptionsMenu.cpp" />
+    <ClCompile Include="Menu\PauseScreen.cpp" />
+    <ClCompile Include="Menu\Screen.cpp" />
+    <ClCompile Include="Observers\LevelData.cpp" />
+    <ClCompile Include="Observers\levelObserver.cpp" />
+    <ClCompile Include="Particles\Emitter.cpp" />
+    <ClCompile Include="Particles\Particle.cpp" />
+    <ClCompile Include="Particles\Timer.cpp" />
+    <ClCompile Include="Resource Manager\ImageResource.cpp" />
+    <ClCompile Include="Resource Manager\ResourceManager.cpp" />
+    <ClCompile Include="Resource Manager\SoundResource.cpp" />
+    <ClCompile Include="Shader class\Shader.cpp" />
+    <ClCompile Include="Utils\ContactListener.cpp" />
+    <ClCompile Include="Utils\VectorAPI.cpp" />
+    <ClCompile Include="Utils\MathUtils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AI\Actions.h" />
+    <ClInclude Include="AI\PlayerAiComponent.h" />
+    <ClInclude Include="AI\BehaviourTree.h" />
+    <ClInclude Include="AI\PlayerAiSystem.h" />
+    <ClInclude Include="Bullets\Bullet.h" />
+    <ClInclude Include="Bullets\BulletManager.h" />
+    <ClInclude Include="Client\Client.h" />
+    <ClInclude Include="Client\ParseUtils.h" />
+    <ClInclude Include="Client\UDPClient.h" />
+    <ClInclude Include="ECS\Components\AiComponent.h" />
+    <ClInclude Include="ECS\Components\ParticleEffectsComponent.h" />
+    <ClInclude Include="ECS\Components\NetworkComponent.h" />
+    <ClInclude Include="ECS\Systems\AiSystem.h" />
+    <ClInclude Include="ECS\Systems\HealthSystem.h" />
+    <ClInclude Include="ECS\Systems\ParticleSystem.h" />
+    <ClInclude Include="Factories\EnemyFactory.h" />
+    <ClInclude Include="Hud.h" />
+    <ClInclude Include="Input\Command.h" />
+    <ClInclude Include="Input\ConcreteCommand.h" />
+    <ClInclude Include="ECS\Components\AnimationComponent.h" />
+    <ClInclude Include="ECS\Components\BodyComponent.h" />
+    <ClInclude Include="ECS\Components\Components.h" />
+    <ClInclude Include="ECS\Components\HealthComponent.h" />
+    <ClInclude Include="ECS\Components\PositionComponent.h" />
+    <ClInclude Include="ECS\Components\SpriteComponent.h" />
+    <ClInclude Include="ECS\Entities\Entity.h" />
+    <ClInclude Include="ECS\Systems\NetworkingSystem.h" />
+    <ClInclude Include="ECS\Systems\AnimationSystem.h" />
+    <ClInclude Include="ECS\Systems\PhysicsSystem.h" />
+    <ClInclude Include="ECS\Systems\RenderSystem.h" />
+    <ClInclude Include="ECS\Systems\System.h" />
+    <ClInclude Include="Factories\PlayerFactory.h" />
+    <ClInclude Include="Factories\Factory.h" />
+    <ClInclude Include="FSM\Animation.h" />
+    <ClInclude Include="FSM\AnimationState.h" />
+    <ClInclude Include="FSM\IdleState.h" />
+    <ClInclude Include="FSM\IState.h" />
+    <ClInclude Include="FSM\WalkingState.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Input\InputHandler.h" />
+    <ClInclude Include="Level\Goal.h" />
+    <ClInclude Include="Level\LevelManager.h" />
+    <ClInclude Include="Level\Level.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Menu\Button.h" />
+    <ClInclude Include="Menu\CreditsScreen.h" />
+    <ClInclude Include="Menu\DeathScreen.h" />
+    <ClInclude Include="Menu\Label.h" />
+    <ClInclude Include="Menu\LevelSelectMenu.h" />
+    <ClInclude Include="Menu\LobbyScreen.h" />
+    <ClInclude Include="Menu\MainMenu.h" />
+    <ClInclude Include="Menu\ModeSelectScreen.h" />
+    <ClInclude Include="Menu\OptionsMenu.h" />
+    <ClInclude Include="Menu\PauseScreen.h" />
+    <ClInclude Include="Menu\Screen.h" />
+    <ClInclude Include="Observers\LevelData.h" />
+    <ClInclude Include="Observers\levelObserver.h" />
+    <ClInclude Include="Observers\Observer.h" />
+    <ClInclude Include="Observers\Subject.h" />
+    <ClInclude Include="Particles\Emitter.h" />
+    <ClInclude Include="Particles\Particle.h" />
+    <ClInclude Include="Particles\Timer.h" />
+    <ClInclude Include="Resource Manager\ImageResource.h" />
+    <ClInclude Include="Resource Manager\ResourceManager.h" />
+    <ClInclude Include="ECS\Systems\ControlSystem.h" />
+    <ClInclude Include="Shader class\Shader.h" />
+    <ClInclude Include="Systems\RenderSystem.h" />
+    <ClInclude Include="Systems\System.h" />
+    <ClInclude Include="Utils\CollisionData.h" />
+    <ClInclude Include="Utils\ContactListener.h" />
+    <ClInclude Include="Utils\Packet.h" />
+    <ClInclude Include="Utils\PhysicsBody.h" />
+    <ClInclude Include="Utils\TutorialTrigger.h" />
+    <ClInclude Include="Utils\VectorAPI.h" />
+    <ClInclude Include="Utils\MathUtils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource Manager\SoundResource.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
